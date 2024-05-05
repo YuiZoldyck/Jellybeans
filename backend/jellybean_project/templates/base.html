@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>JellyBean Journal</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap4-retro.css'%}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <!-- htmx.js -->
+    <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="bg-danger navbar-dark text-white">
+      <div class="container">
+        <nav class="navbar px-0 navbar-expand-lg navbar-dark">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a href="/" class="pl-md-0 p-3 text-white">Home</a>
+              <a href="/create/" class="p-3 text-decoration-none text-white">Add Flavor</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron bg-secondary text-center text-danger mb-0 radius-0">
+      <div class="container">
+        <div class="ht-tm-header">
+          <h1 class="display-1 display-xxl text-uppercase">Jellybean Journal</h1>
+          <span class="lead">What Jellybean Flavors Have I Eaten?</span>
+        </div>
+      </div>
+    </div>
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
+
+    <!-- my code. color block under ti
+
+      
