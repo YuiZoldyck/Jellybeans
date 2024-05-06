@@ -30,7 +30,7 @@ Run the development server:
 
     python manage.py runserver
 
-    Access the application:
+Access the application:
 
     Open your web browser and go to http://localhost:8000/ to access the JellyBean Journal.
 
