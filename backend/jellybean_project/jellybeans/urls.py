@@ -8,4 +8,5 @@ urlpatterns = [
     path('addflavor/', addFlavorView, name="add"),
     path('submitchanges/<int:sid>', submitChanges, name='submit'),
     path('delete/<int:sid>', deletePageView, name='delete'),
+
 ]

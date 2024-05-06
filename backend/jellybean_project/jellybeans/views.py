@@ -1,8 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-# from rest_framework import generics
 from .models import Flavor
-# from .serializers import FlavorSerializer
 
 # Create your views here.
 
@@ -21,12 +18,22 @@ def addFlavorView(request):
         name = request.POST['Flavor']
         color = request.POST['Color']
         description = request.POST['Description']
-
+        rating = float(request.POST['Rating'])
+        
         flavor = Flavor()
 
         flavor.Flavor = name
         flavor.Color = color
         flavor.Description = description
+        flavor.Rating = rating
+
+        try:
+            if rating < 0 or rating > 5:
+                raise ValueError
+        except ValueError:
+            error_message = "Invalid rating value. Rating must be between 0 and 5."
+            return render(request, 'addflavor.html', {'error': error_message, 'flavor_data': flavor})
+        
 
         flavor.save()
 
@@ -35,9 +42,9 @@ def addFlavorView(request):
 def updatePageView(request, sid):
     flavor = Flavor.objects.values().get(id=sid)
     context = {
-        'data':flavor
+        'flavor':flavor
     }
-    return render(request, 'updateFlavor.html', {'data':context})
+    return render(request, 'updateFlavor.html', context)
 
 def submitChanges(request,sid):
     flavor = Flavor.objects.get(id=sid)
@@ -46,10 +53,19 @@ def submitChanges(request,sid):
         name = request.POST['Flavor']
         color = request.POST['Color']
         description = request.POST['Description']
+        rating = float(request.POST['Rating'])
 
         flavor.Flavor = name
         flavor.Color = color
         flavor.Description = description
+        flavor.Rating = rating
+
+        try:
+            if rating < 0 or rating > 5:
+                raise ValueError
+        except ValueError:
+            error_message = "Invalid rating value. Rating must be between 0 and 5."
+            return render(request, 'updateFlavor.html', {'error': error_message, 'flavor': flavor})
 
         flavor.save()
     return redirect(indexPageView)

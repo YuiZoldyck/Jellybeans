@@ -3,9 +3,6 @@
 {% block content %}
 
     <div id='main' class="container py-5 mb5">
-        <div >
-            {% comment %} <img src="{% static 'img/CassetteRemix 1.svg'%}" alt="cassette tape" class = 'cassettediv'> {% endcomment %}
-        </div>
         <br/>
         <div id="table">       
         <table class="table">
@@ -26,11 +23,19 @@
                 <tr scope="row">
                     {% for col,value in row.items %}
                         {% if col != 'id' %}
-                            <td>{{ value }}</td>
+                            {% if col == 'Rating' %}
+                                <td>
+                                    {% for _ in "x"|ljust:row.Rating %}
+                                        <i class="fas fa-star"></i>
+                                    {% endfor %}
+                                </td>
+                            {% else %}
+                                <td>{{ value }}</td>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                     <td>
-                        <form method = "post" action="edit/{{ row.id }}">
+                        <form method="post" action="edit/{{ row.id }}">
                             {% csrf_token %}
                             <input type="submit" value="Edit" class="btn btn-sm btn-primary my-1 my-sm-0"></input>
                         </form>

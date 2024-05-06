@@ -3,34 +3,48 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h1 class="mb-4">Edit Flavor:</h1>
-      <form method="post" action="/submitchanges/{{ data.data.id }}">
+      <h1>Update Flavor</h1>
+
+      {% if error %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% endif %}
+
+      <form method="post" action="{% url 'submit' flavor.id %}">
         {% csrf_token %}
         <div class="form-group">
           <label for="Flavor">Flavor Name:</label>
           <input
             type="text"
-            value="{{ data.data.Flavor }}"
             name="Flavor"
             class="form-control"
+            value="{{ flavor.Flavor }}"
           />
         </div>
         <div class="form-group">
-          <label for="Color">Color:</label>
+          <label for="Color">Jellybean Color:</label>
           <input
             type="text"
-            value="{{ data.data.Color }}"
             name="Color"
             class="form-control"
+            value="{{ flavor.Color }}"
           />
         </div>
         <div class="form-group">
-          <label for="Description">Description:</label>
+          <label for="Description">Jellybean Description:</label>
           <input
             type="text"
-            value="{{ data.data.Description }}"
             name="Description"
             class="form-control"
+            value="{{ flavor.Description }}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Rating">Jellybean Rating:</label>
+          <input
+            type="text"
+            name="Rating"
+            class="form-control"
+            value="{{ flavor.Rating }}"
           />
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">
